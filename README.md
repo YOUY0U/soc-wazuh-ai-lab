@@ -24,7 +24,7 @@
 - [Roadmap & Améliorations](#-roadmap--améliorations)
 - [Compétences acquises](#-compétences-acquises)
 - [Références](#-références)
-- [Auteur](#-auteur)
+- [Contact & Communauté](#-contact--communauté)
 
 ---
 
