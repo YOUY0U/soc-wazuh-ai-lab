@@ -46,19 +46,43 @@ Ce projet vise à concevoir et déployer un **mini-SOC (Security Operations Cent
 
 ## 🏗️ Architecture globale
 
-### 🖼️ Diagramme général
-*(Insère ici ton image : `assets/architecture.png`)*
+### 🧭 Diagramme général
 
-    Wazuh Manager
-    + Indexer + Dashboard
-        │
-   ┌──────────────┬──────────────┬──────────────┐
-   │ Windows      │ Linux        │ VM Vulnérable│
-   │ Sysmon+Wazuh │ Auditd+Wazuh │ DVWA/Metaspl │
-        │
-     Module IA (Python)
-     - Résumé alertes
-     - Anomalies ML
+```mermaid
+graph TD
+    %% === STYLES GLOBAUX ===
+    classDef node fill:#0f2537,stroke:#00b3b3,stroke-width:1px,color:#e6f8f8,font-size:14px,font-family:Inter,Roboto,sans-serif;
+    classDef manager fill:#001f33,stroke:#00d4d4,color:#00ffff,font-weight:bold,rx:6,ry:6;
+    classDef ia fill:#1c104f,stroke:#9b6bff,color:#d8c6ff,font-weight:bold,rx:6,ry:6;
+    classDef agent fill:#002b36,stroke:#00b3b3,color:#e6f8f8,rx:6,ry:6;
+    classDef vuln fill:#3d1a1a,stroke:#ff4d4d,color:#ffeaea,rx:6,ry:6;
+    classDef infra fill:#0a0f17,stroke:#007777,color:#b2f5f5,font-weight:bold,rx:8,ry:8;
+
+    %% === NŒUDS PRINCIPAUX ===
+    A["🔒 <b>Wazuh Manager</b><br/>Indexer + Dashboard"]:::manager
+    B["💻 Windows Agent<br/>Sysmon + Wazuh"]:::agent
+    C["🖥️ Linux Agent<br/>Auditd + Wazuh"]:::agent
+    D["🎯 VM Vulnérable<br/>DVWA / Metasploitable"]:::vuln
+    E["🧠 Module IA (Python)<br/>Résumé alertes + Anomalies ML"]:::ia
+
+    %% === LIENS ===
+    B --> A
+    C --> A
+    D --> A
+    A --> E
+
+    %% === GROUPE ===
+    subgraph "🏠 Infrastructure Home-Lab (Proxmox)"
+      A
+      B
+      C
+      D
+      E
+    end
+
+    %% === LÉGENDE ===
+    class A,B,C,D,E node;
+```
 
 ### 🔌 Flux réseau
 | Composant | Port | Protocole | Rôle |
