@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="assets/logo-SOC.png" alt="Mini-SOC AI Lab circular logo" width="140"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="assets/logo-SOC2.png" alt="Mini-SOC AI Lab text logo" width="220"/>
+</p>
+
 # 🛡️ Mini-SOC personnel Wazuh augmenté par IA
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
